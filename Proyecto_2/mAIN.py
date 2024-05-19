@@ -1,6 +1,4 @@
 import math
-import numpy as np
-from scipy.optimize import fsolve
 def Metodo_Secante():
     def f(x):
         return 4*x**3 - 3.8*x**2 - 2*x
@@ -47,15 +45,23 @@ def Metodo_Secante():
             if(ErrorAbs<= Error):
                 i= i+1 
                 opc = False
-def Metodo_Punto_Fijo(tol = 1e-5):
+def Metodo_Punto_Fijo():
+    
     # Define la función
     def g(x):
         return x**2 - 4
-    x0 = 0.5
-    
-   
-
-    
+    #Variables
+    x0 = 0
+    n = 0
+    x1 = 0
+    tol = 0
+    for k in range(n):
+        x1 = g(x0)
+        if(abs(x1 -x0) < tol):
+            print(f"x {k +1}, = {x1}, Es punto fijo :D")
+            return
+        x0 =x1
+        print(f"x {k +1}, = {x1}")     
 def Menu():
     
     while(True):
