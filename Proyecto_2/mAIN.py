@@ -1,18 +1,14 @@
-import math
+import math as m
 def Metodo_Secante():
     def f(x):
         return 4*x**3 - 3.8*x**2 - 2*x
-
     x0 = 2
     x1 =  3  
     Error = 0.05
     i=0
     opc = True
-
     while(opc):
-       
         if(i == 0):
-            
             x = x1 - (( f(x1)*(x0 - x1)) / (f(x0) - f(x1) ))
             ErrorAbs = 0
             fx1 = f(x1)
@@ -28,8 +24,6 @@ def Metodo_Secante():
             i = i + 1
 
         if(i > 0 ):
-
-            
             x = x1 - (( f(x1)*(x0 - x1)) / (f(x0) - f(x1) ))
             ErrorAbs = ((abs(x -x1)/x))*100
             fx1 = f(x1)
@@ -49,19 +43,27 @@ def Metodo_Punto_Fijo():
     
     # Define la función
     def g(x):
-        return x**2 - 4
+        return m.sqrt(m.e**x/3)
     #Variables
     x0 = 0
-    n = 0
-    x1 = 0
-    tol = 0
+    n = 5
+
+    tol = 6
     for k in range(n):
         x1 = g(x0)
-        if(abs(x1 -x0) < tol):
-            print(f"x {k +1}, = {x1}, Es punto fijo :D")
+        error = abs((x1-x0)/x1 )*100
+        if(abs((x1-x0)/x1 )*100 < tol):
+            print(f"x {k +1}, = {x1}, Es punto fijo ")
+            error = abs((x1-x0)/x1 )*100
+            print(f"Error {error}") 
+           
+
             return
-        x0 =x1
-        print(f"x {k +1}, = {x1}")     
+        
+        x0 = x1
+        print(f"x {k +1}, = {x1}") 
+        print(f"Error {error}") 
+           
 def Menu():
     
     while(True):
@@ -77,8 +79,4 @@ def Menu():
             
             case "3":
                 exit()
-                
-        
-
-
 Menu()
